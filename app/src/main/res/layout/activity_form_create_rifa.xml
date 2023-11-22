@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cadastrofundo"
+    tools:context=".FormCreateRifa"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Titulo"
+        android:layout_marginVertical="100dp"
+        android:layout_marginLeft="12dp">
+
+        <TextView
+            android:id="@+id/titulo_criarRifa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Criar nova Rifa"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="30sp"/>
+
+        <ImageButton
+            android:id="@+id/delete"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Delete"
+            android:onClick="DeleteRifa"
+            android:src="@drawable/delete"
+            app:tint="@color/black" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="372dp"
+        android:layout_height="369dp"
+        android:layout_below="@+id/Titulo"
+        android:backgroundTint="@color/white"
+        android:onClick="Opcoes_QtPontos"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/nameRifa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="Título"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#BDBCBE" />
+
+        <EditText
+            android:id="@+id/awardRifa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="Prêmio"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#BDBCBE" />
+
+        <EditText
+            android:id="@+id/drawRifa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="Data do Sorteio Ex.: 12/06/2023"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#BDBCBE" />
+
+        <EditText
+            android:id="@+id/valueRifa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="Valor Ex.: 2.50"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#BDBCBE" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/qtPtRifa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:fontFamily="@font/montserrat"
+                android:hint="Qt. de pontos Ex.: 50"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#BDBCBE"
+                android:focusable="false"
+                android:clickable="false"/>
+
+            <ImageButton
+                android:id="@+id/menu_expandir"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Opções de Quantidade de rifa"
+                android:onClick="Opcoes_QtPontos"
+                android:src="@drawable/expand"
+                app:tint="@color/black" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#FDE1C1"
+        android:fontFamily="@font/montserrat"
+        android:onClick="onClick_Create"
+        android:text="Cancelar"
+        android:textColor="#000000"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/button_Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#50C878"
+        android:fontFamily="@font/montserrat"
+        android:onClick="Salvar"
+        android:text="Salvar"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+</RelativeLayout>

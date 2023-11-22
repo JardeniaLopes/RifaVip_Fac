@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/geral"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cadastrofundo"
+    tools:context=".FormPointCliente"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/TituloCadastro"
+        android:fontFamily="@font/montserrat"
+        android:text="Informações do Comprador"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="100dp"
+        android:layout_marginLeft="12dp"/>
+
+    <LinearLayout
+        android:layout_width="372dp"
+        android:layout_height="369dp"
+        android:layout_below="@+id/TituloCadastro"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/white"
+        android:onClick="Opcoes_QtPontos"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/nomeCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="Nome"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#BDBCBE" />
+
+        <EditText
+            android:id="@+id/phone_Customer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="Telefone"
+            android:inputType="phone"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#BDBCBE" />
+
+        <EditText
+            android:id="@+id/enderecoCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="Endereço"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#BDBCBE" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/qtPtRifa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:fontFamily="@font/montserrat"
+                android:hint="Qt. de pontos Ex.: 50"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#BDBCBE"
+                android:focusable="false"
+                android:clickable="false"/>
+
+            <ImageButton
+                android:id="@+id/menu_expandir"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Opções de Quantidade de rifa"
+                android:onClick="Opcoes_QtPontos"
+                android:src="@drawable/expand"
+                app:tint="@color/black" />
+        </RelativeLayout>
+
+        <CheckBox
+            android:id="@+id/checkBox_Pago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#50C878"
+            android:checked="false"
+            android:fontFamily="@font/montserrat"
+            android:text="Pago"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#FDE1C1"
+        android:fontFamily="@font/montserrat"
+        android:onClick="onClick_Create"
+        android:text="Cancelar"
+        android:textColor="#000000"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/button_Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#50C878"
+        android:fontFamily="@font/montserrat"
+        android:onClick="SalvarPonto"
+        android:text="Salvar"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+</RelativeLayout>

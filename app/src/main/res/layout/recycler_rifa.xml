@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:layout_marginVertical="8dp"
+    android:background="@drawable/bc_rifas"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nome_Rifa"
+            android:text="Nome da Rifa"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginVertical="4dp"/>
+        <ImageButton
+            android:id="@+id/configuracao"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Menu"
+            android:onClick="Configuração"
+            android:src="@drawable/configuracao"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/premio_Rifa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="Premiação"
+        android:textSize="17sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/data_Sorteio"
+        android:text="Data do Sorteio"
+        android:textSize="12sp"
+        android:gravity="right"
+        android:layout_marginVertical="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Cliqueaaqui"
+            android:text="Clique aqui para ir para os pontos"
+            android:textSize="12sp"
+            android:layout_marginVertical="4dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

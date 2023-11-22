@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Rifa King</string>
+    <string name="entrar">Sign In</string>
+    <string name="text_cadastro">Sign up</string>
+    <string name="titulo_cadastro_um">Create</string>
+    <string name="titulo_cadastro_dois">Account</string>
+    <string name="criar_conta">Criar Conta</string>
+    <string name="cadastrar">Cadastrar</string>
+</resources>

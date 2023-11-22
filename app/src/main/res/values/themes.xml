@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.RifaKing" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/tema</item>
+        <item name="colorSecondary">@color/tema</item>
+    </style>
+
+    <style name="Theme.RifaKing" parent="Base.Theme.RifaKing" />
+</resources>

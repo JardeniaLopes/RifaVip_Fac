@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1087894250472",
+    "project_id": "rifavip-6dd38",
+    "storage_bucket": "rifavip-6dd38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087894250472:android:88e019fc25b5d7f70bba5d",
+        "android_client_info": {
+          "package_name": "com.example.rifaking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBno0aUbhKx7VMjEcnTnFd9DrGjSrbf-7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
