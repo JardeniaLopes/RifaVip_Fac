@@ -25,21 +25,22 @@ public class MeusPontos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meus_pontos);
+
         pontosView = findViewById(R.id.pontos_view);
         msgNoPontos = findViewById(R.id.msgPontos);
         docId = getIntent().getStringExtra("docId");
 
-        setupPontosView();
+        setupPontosView(docId);
     }
 
     public void VoltarTelaPontos(View v){
         Intent i = new Intent(this, FormPoints.class);
         startActivity(i);
     }
-    public void setupPontosView(){
+    public void setupPontosView(String docId){
         Query query = ConfiguracoesDB.getColecaoPontos(docId).orderBy("numeroDoPonto", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Cliente_Model> options = new FirestoreRecyclerOptions.Builder<Cliente_Model>()
-                .setQuery(query, Cliente_Model.class).build();
+                .setQuery(query,Cliente_Model.class).build();
         pontosView.setLayoutManager(new LinearLayoutManager(this));
         pontosAdaptador = new PontosAdaptador(options, this);
         pontosView.setAdapter(pontosAdaptador);

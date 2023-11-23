@@ -36,7 +36,7 @@
             android:text="Nome do Cliente"
             android:textSize="17sp"/>
         <ImageButton
-            android:id="@+id/configuracao"
+            android:id="@+id/configuracaoPontos"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"

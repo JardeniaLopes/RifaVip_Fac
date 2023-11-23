@@ -1,6 +1,7 @@
 package com.example.rifaking;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,18 @@ public class PontosAdaptador extends FirestoreRecyclerAdapter<Cliente_Model, Pon
         holder.numeroPonto.setText(model.numeroDoPonto);
         holder.telefoneCliente.setText(model.telefoneCliente);
         holder.enderecoCliente.setText(model.Endereco);
+
+        holder.configuracao.setOnClickListener((view) ->{
+            Intent intent = new Intent(context, FormPointCliente.class);
+            intent.putExtra("nomeCliente", model.nomeCliente);
+            intent.putExtra("numeroDoPonto", model.numeroDoPonto);
+            intent.putExtra("telefoneCliente", model.telefoneCliente);
+            intent.putExtra("endereco", model.Endereco);
+            String pontoId = this.getSnapshots().getSnapshot(position).getId();
+            intent.putExtra("pontoId", pontoId);
+
+            context.startActivity(intent);
+        });
     }
     @NonNull
     @Override
@@ -35,18 +48,18 @@ public class PontosAdaptador extends FirestoreRecyclerAdapter<Cliente_Model, Pon
     }
 
 
-    class PontoView extends RecyclerView.ViewHolder {
+    public class PontoView extends RecyclerView.ViewHolder {
         TextView nomeCliente, numeroPonto, telefoneCliente, enderecoCliente;
         ImageButton configuracao;
         public PontoView(@NonNull View itemView) {
 
             super(itemView);
 
-            nomeCliente = itemView.findViewById(R.id.nomeCliente);
-            numeroPonto = itemView.findViewById(R.id.numero_Ponto);
+            nomeCliente = itemView.findViewById(R.id.nome_cliente);
+            numeroPonto = itemView.findViewById(R.id.numeroDo_Ponto);
             telefoneCliente = itemView.findViewById(R.id.telefone_Cliente);
-            enderecoCliente = itemView.findViewById(R.id.enderecoCliente);
-            configuracao = itemView.findViewById(R.id.configuracao);
+            enderecoCliente = itemView.findViewById(R.id.endereco_Cliente);
+            configuracao = itemView.findViewById(R.id.configuracaoPontos);
         }
     }
 }

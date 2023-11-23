@@ -33,6 +33,7 @@ public class FormMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_main);
+
         rifaView = findViewById(R.id.rifas_view);
         messagemNoRifa = findViewById(R.id.rifamensagem);
         menuExit = findViewById(R.id.menu_btn);
@@ -98,10 +99,6 @@ public class FormMain extends AppCompatActivity {
                 return false;
             }
         });
-    }
-    public void onClick_Points(View v) {
-        Intent i = new Intent( this,FormPoints.class);
-        startActivity(i);
     }
 
     public void onClick_createRifa(View view) {

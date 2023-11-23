@@ -86,8 +86,6 @@ public class FormCreateRifa extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 if(menuItem.getTitle() == "50"){
                     q_pontosRifa.setText("50");
-                } else if (menuItem.getTitle() == "100") {
-                    q_pontosRifa.setText("100");
                 }
                 return false;
             }

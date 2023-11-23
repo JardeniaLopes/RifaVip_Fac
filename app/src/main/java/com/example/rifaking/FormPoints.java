@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 public class FormPoints extends AppCompatActivity {
 
@@ -33,6 +34,7 @@ public class FormPoints extends AppCompatActivity {
     public void onClick_Return(View v) {
 
         Intent i = new Intent( this,FormMain.class);
+        i.putExtra("docId", docId);
         startActivity(i);
     }
 
@@ -45,10 +47,15 @@ public class FormPoints extends AppCompatActivity {
     }
 
     public void PontosCadastrados(View v) {
+        try {
+            Intent i = new Intent(this, MeusPontos.class);
+            i.putExtra("docId", docId);
+            startActivity(i);
+        } catch (Exception e) {
+            e.printStackTrace();
 
-        Intent i = new Intent( this,MeusPontos.class);
-        i.putExtra("docId", docId);
-        FormPoints.this.startActivity(i);
+            Toast.makeText(this, "Erro ao iniciar a página", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }
