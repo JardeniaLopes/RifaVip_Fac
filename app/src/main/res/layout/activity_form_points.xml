@@ -12,13 +12,44 @@
         android:id="@+id/button_Draw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sortear"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:backgroundTint="#50C878"
         android:fontFamily="@font/montserrat"
+        android:onClick="onClick_Edit"
+        android:text="Sortear"
         android:textColor="#000000"
         android:textSize="16sp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp">
+
+        <Button
+            android:id="@+id/PontosCadastrados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:background="#00533030"
+            android:fontFamily="@font/montserrat"
+            android:onClick="PontosCadastrados"
+            android:text="Ver Pontos Cadastrados"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="55dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/click" />
+
+    </RelativeLayout>
 
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="wrap_content"
@@ -827,16 +858,17 @@
             app:layout_row="0" />
     </androidx.gridlayout.widget.GridLayout>
 
-    <ImageButton
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_Back"
         android:onClick="onClick_Return"
-        app:srcCompat="@drawable/voltar_"
-        android:layout_alignParentBottom="true"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="Voltar"
-        app:tint="#50C878"
-        android:backgroundTint="#50C878"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#50C878"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/voltar_"/>
 
 </RelativeLayout>

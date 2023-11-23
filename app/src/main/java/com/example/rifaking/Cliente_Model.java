@@ -5,6 +5,7 @@ public class Cliente_Model {
     String nomeCliente;
     String telefoneCliente;
     String Endereco;
+    String numeroDoPonto;
     boolean Pago;
 
     public String getNomeCliente() {
@@ -29,6 +30,14 @@ public class Cliente_Model {
 
     public void setEndereco(String endereco) {
         Endereco = endereco;
+    }
+
+    public String getNumeroDoPonto() {
+        return numeroDoPonto;
+    }
+
+    public void setNumeroDoPonto(String numeroDoPonto) {
+        this.numeroDoPonto = numeroDoPonto;
     }
 
     public boolean isPago() {

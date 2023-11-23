@@ -73,12 +73,12 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/qtPtRifa"
+                android:id="@+id/numero_Ponto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
                 android:fontFamily="@font/montserrat"
-                android:hint="Qt. de pontos Ex.: 50"
+                android:hint="Número do Ponto"
                 android:padding="12dp"
                 android:textColor="#000000"
                 android:textColorHighlight="#000000"
@@ -87,13 +87,13 @@
                 android:clickable="false"/>
 
             <ImageButton
-                android:id="@+id/menu_expandir"
+                android:id="@+id/menu_pontos"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_alignParentEnd="true"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Opções de Quantidade de rifa"
-                android:onClick="Opcoes_QtPontos"
+                android:onClick="Opcoes_Pontos"
                 android:src="@drawable/expand"
                 app:tint="@color/black" />
         </RelativeLayout>

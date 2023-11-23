@@ -2,11 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/telaponto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MeusPontos"
     android:padding="16dp"
-    tools:context=".FormMain">
+    android:background="@drawable/telaponto">
 
     <RelativeLayout
         android:id="@+id/Titulo"
@@ -16,57 +16,44 @@
         android:background="@drawable/bk_minhasrifas">
 
         <TextView
-            android:id="@+id/titulo_criarRifa"
+            android:id="@+id/titulo_Pontos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/montserrat"
-            android:text="Minhas Rifas"
+            android:text="Pontos Cadastrados"
             android:textColor="#000000"
             android:textFontWeight="400"
             android:textSize="24sp"
             android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/menu_btn"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Menu"
-            android:onClick="Menu"
-            android:src="@drawable/exit"
-            app:tint="@color/white" />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rifas_view"
+        android:id="@+id/pontos_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/Titulo"
-        android:layout_marginTop="1mm"/>
-
-    <TextView
-        android:id="@+id/rifamensagem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Você não criou nenhuma rifa"
-        android:visibility="gone"/>
+        android:layout_marginTop="1dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_CreateRifa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentEnd="false"
         android:layout_alignParentBottom="true"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:backgroundTint="#50C878"
         android:contentDescription="Adicionar Nova Rifa"
-        android:onClick="onClick_createRifa"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/add_rifa" />
+        android:onClick="VoltarTelaPontos"
+        android:src="@drawable/voltar_" />
 
+    <TextView
+        android:id="@+id/msgPontos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Você não cadastrou nenhum Ponto"
+        android:visibility="gone"/>
 
 </RelativeLayout>
