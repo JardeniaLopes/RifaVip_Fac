@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
@@ -19,8 +18,6 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
-
-import org.w3c.dom.Document;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,6 +31,8 @@ public class FormCreateRifa extends AppCompatActivity {
     String nome, premio, dataSorteio, qtPontos, valor, docId;
 
     ImageButton menu_Opcoes;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +75,11 @@ public class FormCreateRifa extends AppCompatActivity {
         }
     }
 
+    public void onClick_Create(View v) {
+        Intent i = new Intent( this,FormMain.class);
+        startActivity(i);
+    }
+
     public void Opcoes_QtPontos(View v){
         PopupMenu popupMenu = new PopupMenu(FormCreateRifa.this, menu_Opcoes);
         popupMenu.getMenu().add("50");
@@ -92,86 +96,108 @@ public class FormCreateRifa extends AppCompatActivity {
         });
     }
 
-    public void TodosPontos(View v) {
-        Intent i = new Intent( this,FormPoints.class);
-        startActivity(i);
-    }
-    public boolean validar()
-    {
-        boolean retorno = true;
-        String nome = nomeRifa.getText().toString();
-        String premio = premioRifa.getText().toString();
-        String pontos = q_pontosRifa.getText().toString();
-        String valor= valorRifa.getText().toString();
-        String data = dataRifa.getText().toString();
+    private boolean validarCamposObrigatorios() {
+        boolean valido = true;
 
-        if (nome.isEmpty())
-        {
-            nomeRifa.setError("Campo vazio");
-            retorno = false;
-        }
-        if (premio.isEmpty())
-        {
-            premioRifa.setError("Campo vazio");
-            retorno = false;
-        }
-        if(pontos.isEmpty())
-        {
-            q_pontosRifa.setError("Campo vazio");
-            retorno = false;
-        }
-        if(valor.isEmpty())
-        {
-            valorRifa.setError("Campo vazio");
-            retorno = false;
-        }
-        if(data.isEmpty())
-        {
-            dataRifa.setError("Campo vazio");
-            retorno = false;
-        }
+        valido = validarCampo(nomeRifa, "Campo vazio");
+        // Colocar && testa se o validar() retornar true mas em algum momento
+        // o valido ficou false, ele vai continuar false
+        // So muda pra true se nenhum validar() retornar false
+        valido = validarCampo(premioRifa, "Campo vazio") && valido;
+        valido = validarCampo(q_pontosRifa, "Campo vazio") && valido;
+        valido = validarCampoValor(valorRifa, "Campo vazio") && valido;
+        valido = validarCampoData(dataRifa, "Campo vazio") && valido;
 
-        return retorno;
+        return valido;
     }
 
-    public void onClick_Create(View v) {
-        Intent i = new Intent( this,FormMain.class);
-        startActivity(i);
+    private boolean validarCampo(EditText campo, String mensagemErro) {
+        String valorCampo = campo.getText().toString();
+        if (valorCampo.isEmpty()) {
+            campo.setError(mensagemErro);
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validarCampoData(EditText campoData, String mensagemErro) {
+        String valorData = campoData.getText().toString();
+        if (valorData.isEmpty()) {
+            campoData.setError(mensagemErro);
+            return false;
+        } else {
+            // Validar formato da data (dd/mm/aaaa)
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            dateFormat.setLenient(false);
+            try {
+                Date dataRifaDate = dateFormat.parse(valorData);
+                // Verificar se a data é menor que a data atual
+                if (dataRifaDate.before(new Date())) {
+                    campoData.setError("A data não pode ser menor que a data atual");
+                    return false;
+                }
+                return true;
+            } catch (ParseException e) {
+                campoData.setError("Formato de data inválido (dd/mm/aaaa)");
+                return false;
+            }
+        }
+    }
+
+    private boolean validarCampoValor(EditText campoValor, String mensagemErro) {
+        String valor = campoValor.getText().toString();
+        if (valor.isEmpty()) {
+            campoValor.setError(mensagemErro);
+            return false;
+        } else {
+            // Validar formato do valor (2.50)
+            try {
+                float valorFloat = Float.parseFloat(valor);
+                if (valorFloat <= 0) {
+                    campoValor.setError("Digite um valor válido maior que zero");
+                    return false;
+                }
+                return true;
+            } catch (NumberFormatException e) {
+                campoValor.setError("Valor tem que estar no formato 2.50");
+                return false;
+            }
+        }
     }
 
     public void Salvar(View v) {
-        if (!validar()) {
+        if (validarCamposObrigatorios()) {
+            Intent i = new Intent(this, FormMain.class);
+            startActivity(i);
+
+            String nome = nomeRifa.getText().toString();
+            String premio = premioRifa.getText().toString();
+            String pontos = q_pontosRifa.getText().toString();
+            int qtPontos = Integer.parseInt(pontos);
+            String valor = valorRifa.getText().toString();
+
+            try {
+                float valorRifa = Float.parseFloat(valor);
+                String data = dataRifa.getText().toString();
+
+                Rifa_Model rifa = new Rifa_Model();
+                rifa.setNomeRifa(nome);
+                rifa.setPremio(premio);
+                rifa.setValor(valorRifa);
+                rifa.setQtPontos(qtPontos);
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date dataRifaDate = dateFormat.parse(data);
+                rifa.setDataSorteio(dataRifaDate);
+
+                SalvarNoFirebase(rifa);
+            } catch (NumberFormatException | ParseException e) {
+                e.printStackTrace();
+                System.err.println("Erro ao converter valor ou data.");
+            }
+        } else {
             Toast.makeText(this, "Por favor, preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
-            return;
         }
-
-        Intent i = new Intent(this, FormMain.class);
-        startActivity(i);
-
-        String nome = nomeRifa.getText().toString();
-        String premio = premioRifa.getText().toString();
-        String pontos = q_pontosRifa.getText().toString();
-        int qtPontos = Integer.parseInt(pontos);
-        String valor= valorRifa.getText().toString();
-        float valorRifa = Float.parseFloat(valor);
-        String data = dataRifa.getText().toString();
-
-        Rifa_Model rifa = new Rifa_Model();
-        rifa.setNomeRifa(nome);
-        rifa.setPremio(premio);
-        rifa.setValor(valorRifa);
-        rifa.setQtPontos(qtPontos);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date dataRifa = dateFormat.parse(data);
-            rifa.setDataSorteio(dataRifa);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            System.err.println("Erro ao converter a data." );
-        }
-
-        SalvarNoFirebase(rifa);
-
     }
 
     public void SalvarNoFirebase(Rifa_Model rifa) {
