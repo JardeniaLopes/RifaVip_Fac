@@ -29,6 +29,7 @@ public class FormPoints extends AppCompatActivity {
 
         menu_Pontos = findViewById(R.id.menu_pontos);
         docId = getIntent().getStringExtra("docId");
+        String valorPego = getIntent().getStringExtra("ValorPego");
 
     }
     public void onClick_Return(View v) {
@@ -39,10 +40,14 @@ public class FormPoints extends AppCompatActivity {
     }
 
     public void onClick_Edit(View v) {
+        if (v instanceof Button) {
+            String textButton = ((Button) v).getText().toString();
 
-        Intent i = new Intent( this,FormPointCliente.class);
-        i.putExtra("docId", docId);
-        FormPoints.this.startActivity(i);
+            Intent i = new Intent(this, FormPointCliente.class);
+            i.putExtra("docId", docId);
+            i.putExtra("textButton", textButton);
+            FormPoints.this.startActivity(i);
+        }
 
     }
 
@@ -53,7 +58,6 @@ public class FormPoints extends AppCompatActivity {
             startActivity(i);
         } catch (Exception e) {
             e.printStackTrace();
-
             Toast.makeText(this, "Erro ao iniciar a página", Toast.LENGTH_SHORT).show();
         }
 

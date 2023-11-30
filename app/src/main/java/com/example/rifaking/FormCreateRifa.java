@@ -83,7 +83,6 @@ public class FormCreateRifa extends AppCompatActivity {
     public void Opcoes_QtPontos(View v){
         PopupMenu popupMenu = new PopupMenu(FormCreateRifa.this, menu_Opcoes);
         popupMenu.getMenu().add("50");
-        popupMenu.getMenu().add("100");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -159,7 +158,7 @@ public class FormCreateRifa extends AppCompatActivity {
                 }
                 return true;
             } catch (NumberFormatException e) {
-                campoValor.setError("Valor tem que estar no formato 2.50");
+                campoValor.setError("Valor tem que estar no formato 0.00, com ponto.");
                 return false;
             }
         }

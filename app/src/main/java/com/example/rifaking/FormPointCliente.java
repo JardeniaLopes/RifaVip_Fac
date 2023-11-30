@@ -3,9 +3,13 @@ package com.example.rifaking;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,11 +36,11 @@ public class FormPointCliente extends AppCompatActivity {
             botao31, botao32, botao33, botao34, botao35, botao36, botao37, botao38, botao39, botao40,
             botao41, botao42, botao43, botao44, botao45, botao46, botao47, botao48, botao49, botao50;
 
-    String docId;
+    String docId, textEditText;
     CheckBox botao_pago;
     ImageButton menu_Pontos, delete;
-
     TextView Titulo;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +56,7 @@ public class FormPointCliente extends AppCompatActivity {
         delete = findViewById(R.id.deletePonto);
 
         docId = getIntent().getStringExtra("docId");
+        textEditText = getIntent().getStringExtra("textButton");
         inicializarComponentes();
 
         //receberDados
@@ -69,7 +74,7 @@ public class FormPointCliente extends AppCompatActivity {
         nomeCliente.setText(nome);
         telefoneCliente.setText(telefone);
         enderecoCliente.setText(endereco);
-        numeroPonto.setText(numPonto);
+        numeroPonto.setText(textEditText);
 
         if(isEditar){
             Titulo.setText("Editar Cadastro");
@@ -80,182 +85,30 @@ public class FormPointCliente extends AppCompatActivity {
             delete.setVisibility(View.GONE);
         }
 
+
     }
 
 
     public void Opcoes_Pontos(View v){
         PopupMenu popupMenu = new PopupMenu(FormPointCliente.this, menu_Pontos);
-        popupMenu.getMenu().add("01");
-        popupMenu.getMenu().add("02");
-        popupMenu.getMenu().add("03");
-        popupMenu.getMenu().add("04");
-        popupMenu.getMenu().add("05");
-        popupMenu.getMenu().add("06");
-        popupMenu.getMenu().add("07");
-        popupMenu.getMenu().add("08");
-        popupMenu.getMenu().add("09");
-        popupMenu.getMenu().add("10");
-        popupMenu.getMenu().add("11");
-        popupMenu.getMenu().add("12");
-        popupMenu.getMenu().add("13");
-        popupMenu.getMenu().add("14");
-        popupMenu.getMenu().add("15");
-        popupMenu.getMenu().add("16");
-        popupMenu.getMenu().add("17");
-        popupMenu.getMenu().add("18");
-        popupMenu.getMenu().add("19");
-        popupMenu.getMenu().add("20");
-        popupMenu.getMenu().add("21");
-        popupMenu.getMenu().add("22");
-        popupMenu.getMenu().add("23");
-        popupMenu.getMenu().add("24");
-        popupMenu.getMenu().add("25");
-        popupMenu.getMenu().add("26");
-        popupMenu.getMenu().add("27");
-        popupMenu.getMenu().add("28");
-        popupMenu.getMenu().add("29");
-        popupMenu.getMenu().add("30");
-        popupMenu.getMenu().add("31");
-        popupMenu.getMenu().add("32");
-        popupMenu.getMenu().add("33");
-        popupMenu.getMenu().add("34");
-        popupMenu.getMenu().add("35");
-        popupMenu.getMenu().add("36");
-        popupMenu.getMenu().add("37");
-        popupMenu.getMenu().add("38");
-        popupMenu.getMenu().add("39");
-        popupMenu.getMenu().add("40");
-        popupMenu.getMenu().add("41");
-        popupMenu.getMenu().add("42");
-        popupMenu.getMenu().add("43");
-        popupMenu.getMenu().add("44");
-        popupMenu.getMenu().add("45");
-        popupMenu.getMenu().add("46");
-        popupMenu.getMenu().add("47");
-        popupMenu.getMenu().add("48");
-        popupMenu.getMenu().add("49");
-        popupMenu.getMenu().add("50");
+        for (int i = 0 ; i < 50 ; ++i) {
+            popupMenu.getMenu().add(String.format("%02d",i));
+        }
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                if (menuItem.getTitle() == "01") {
-                    numeroPonto.setText("01");
-
-                } else if (menuItem.getTitle() == "02") {
-                    numeroPonto.setText("02");
-
-                } else if (menuItem.getTitle() == ("03")) {
-                    numeroPonto.setText("03");
-
-                }else if (menuItem.getTitle() ==("04")) {
-                    numeroPonto.setText("04");
-
-                } else if (menuItem.getTitle() == ("05")) {
-                    numeroPonto.setText("05");
-
-                } else if (menuItem.getTitle() == ("06")) {
-                    numeroPonto.setText("06");
-
-                } else if (menuItem.getTitle() == ("07")) {
-                    numeroPonto.setText("07");
-
-                } else if (menuItem.getTitle() == ("08")) {
-                    numeroPonto.setText("08");
-
-                } else if (menuItem.getTitle() == ("09")) {
-                    numeroPonto.setText("09");
-
-                } else if (menuItem.getTitle() == ("10")) {
-                    numeroPonto.setText("10");
-
-                } else if (menuItem.getTitle() == ("11")) {
-                    numeroPonto.setText("11");
-
-                } else if (menuItem.getTitle() == ("12")) {
-                    numeroPonto.setText("12");
-
-                } else if (menuItem.getTitle() == ("13")) {
-                    numeroPonto.setText("13");
-                } else if (menuItem.getTitle() == ("14")) {
-                    numeroPonto.setText("14");
-                } else if (menuItem.getTitle() == ("15")) {
-                    numeroPonto.setText("15");
-                } else if (menuItem.getTitle() == ("16")) {
-                    numeroPonto.setText("16");
-                } else if (menuItem.getTitle() == ("17")) {
-                    numeroPonto.setText("17");
-                } else if (menuItem.getTitle() == ("18")) {
-                    numeroPonto.setText("18");
-                } else if (menuItem.getTitle() == ("19")) {
-                    numeroPonto.setText("19");
-                } else if (menuItem.getTitle() == ("20")) {
-                    numeroPonto.setText("20");
-                } else if (menuItem.getTitle() == ("21")) {
-                    numeroPonto.setText("21");
-                } else if (menuItem.getTitle() == ("22")) {
-                    numeroPonto.setText("22");
-                } else if (menuItem.getTitle() == ("23")) {
-                    numeroPonto.setText("23");
-                } else if (menuItem.getTitle() == ("24")) {
-                    numeroPonto.setText("24");
-                } else if (menuItem.getTitle() == ("25")) {
-                    numeroPonto.setText("25");
-                } else if (menuItem.getTitle() == ("26")) {
-                    numeroPonto.setText("26");
-                } else if (menuItem.getTitle() == ("27")) {
-                    numeroPonto.setText("27");
-                } else if (menuItem.getTitle() == ("28")) {
-                    numeroPonto.setText("28");
-                } else if (menuItem.getTitle() == ("29")) {
-                    numeroPonto.setText("29");
-                } else if (menuItem.getTitle() == ("30")) {
-                    numeroPonto.setText("30");
-                } else if (menuItem.getTitle() == ("31")) {
-                    numeroPonto.setText("31");
-                } else if (menuItem.getTitle() == ("32")) {
-                    numeroPonto.setText("32");
-                } else if (menuItem.getTitle() == ("33")) {
-                    numeroPonto.setText("33");
-                } else if (menuItem.getTitle() == ("34")) {
-                    numeroPonto.setText("34");
-                } else if (menuItem.getTitle() == ("35")) {
-                    numeroPonto.setText("35");
-                } else if (menuItem.getTitle() == ("36")) {
-                    numeroPonto.setText("36");
-                } else if (menuItem.getTitle() == ("37")) {
-                    numeroPonto.setText("37");
-                } else if (menuItem.getTitle() == ("38")) {
-                    numeroPonto.setText("38");
-                } else if (menuItem.getTitle() == ("39")) {
-                    numeroPonto.setText("39");
-                } else if (menuItem.getTitle() == ("40")) {
-                    numeroPonto.setText("40");
-                } else if (menuItem.getTitle() == ("41")) {
-                    numeroPonto.setText("41");
-                } else if (menuItem.getTitle() == ("42")) {
-                    numeroPonto.setText("42");
-                } else if (menuItem.getTitle() == ("43")) {
-                    numeroPonto.setText("43");
-                } else if (menuItem.getTitle() == ("44")) {
-                    numeroPonto.setText("44");
-                } else if (menuItem.getTitle() == ("45")) {
-                    numeroPonto.setText("45");
-                } else if (menuItem.getTitle() == ("46")) {
-                    numeroPonto.setText("46");
-                } else if (menuItem.getTitle() == ("47")) {
-                    numeroPonto.setText("47");
-                } else if (menuItem.getTitle() == ("48")) {
-                    numeroPonto.setText("48");
-                } else if (menuItem.getTitle() == ("49")) {
-                    numeroPonto.setText("49");
-                } else if (menuItem.getTitle() == ("50")) {
-                    numeroPonto.setText("50");
+                for (int i = 0; i < 50; ++i) {
+                    String numberComparar = String.format("%02d", i);
+                    if (menuItem.getTitle() == numberComparar) {
+                        numeroPonto.setText(String.format("%02d", i));
+                    }
                 }
                 return false;
             }
         });
     }
+
 
 
 
@@ -369,11 +222,11 @@ public class FormPointCliente extends AppCompatActivity {
         cliente.setEndereco(endereco);
         cliente.setNumeroDoPonto(ponto);
 
-        SalvarNoFirebase(cliente);
-
+        i.putExtra("docId", docId);
+        SalvarNoFirebase(cliente, docId);
     }
 
-    public void SalvarNoFirebase(Cliente_Model cliente){
+    public void SalvarNoFirebase(Cliente_Model cliente, String docId){
         DocumentReference documentReference;
 
         try {

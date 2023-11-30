@@ -34,8 +34,14 @@ public class MeusPontos extends AppCompatActivity {
     }
 
     public void VoltarTelaPontos(View v){
-        Intent i = new Intent(this, FormPoints.class);
-        startActivity(i);
+        try {
+            Intent i = new Intent(this, FormPoints.class);
+            i.putExtra("docId", docId);
+            startActivity(i);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Erro ao iniciar a página", Toast.LENGTH_SHORT).show();
+        }
     }
     public void setupPontosView(String docId){
         Query query = ConfiguracoesDB.getColecaoPontos(docId).orderBy("numeroDoPonto", Query.Direction.DESCENDING);

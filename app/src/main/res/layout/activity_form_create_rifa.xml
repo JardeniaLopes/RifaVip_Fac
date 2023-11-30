@@ -120,17 +120,6 @@
                 android:textColorHint="#BDBCBE"
                 android:focusable="false"
                 android:clickable="false"/>
-
-            <ImageButton
-                android:id="@+id/menu_expandir"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentEnd="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Opções de Quantidade de rifa"
-                android:onClick="Opcoes_QtPontos"
-                android:src="@drawable/expand"
-                app:tint="@color/black" />
         </RelativeLayout>
 
     </LinearLayout>
